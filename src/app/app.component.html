@@ -1,4 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <app-auth [isLogging]="isLogging"></app-auth>
+  <app-auth [isLogging]="isLogging"
+            (sendLogin)="handleLogin($event)"
+            (sendSignUp)="handleSignUp($event)">
+  </app-auth>
+  <hr>
+  <app-toggle (toggle)="handleToggle($event)" [on]="on">
+    <app-toggle-btn></app-toggle-btn>
+    <app-toggle-on>On</app-toggle-on>
+    <app-toggle-off>Off</app-toggle-off>
+  </app-toggle>
+  <hr>
+  <app-online [state]="'Available'" (stateChange)="handleStateChange($event)">
+    <app-display></app-display>
+    <app-btn-state>Available</app-btn-state>
+    <app-btn-state>Busy</app-btn-state>
+    <app-btn-state>Workin on Angular</app-btn-state>
+    <app-btn-state>Have Dinner</app-btn-state>
+  </app-online>
 </div>

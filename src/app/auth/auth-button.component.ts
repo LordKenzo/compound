@@ -1,19 +1,17 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: "app-auth-button",
+  selector: 'app-auth-button',
   template: `
     <button (click)="onClick()">{{ label }}</button>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthButtonComponent {
-  label;
-  on: boolean;
+  label: string;
+  isLogging: boolean;
   @Output() clicked: EventEmitter<any> = new EventEmitter();
   onClick() {
-    console.log("on 1", this.on);
-    this.on = !this.on;
-    console.log("on 2", this.on);
-    this.clicked.emit(this.on);
+    this.clicked.emit(this.isLogging = !this.isLogging);
   }
 }
